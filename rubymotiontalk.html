@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<head>
+
+	<title>RubyMotion</title>
+	<meta name="author" content="Alex Henry">
+	<!-- Core and extension CSS files -->
+  	<link rel="stylesheet" media="screen" href="core/deck.core.css">
+  	<link rel="stylesheet" media="screen" href="extensions/goto/deck.goto.css">
+  	<link rel="stylesheet" media="screen" href="extensions/menu/deck.menu.css">
+  	<link rel="stylesheet" media="screen" href="extensions/navigation/deck.navigation.css">
+  	<link rel="stylesheet" media="screen" href="extensions/status/deck.status.css">
+  	<link rel="stylesheet" media="screen" href="extensions/scale/deck.scale.css">
+
+  	<!-- Style theme. More available in /themes/style/ or create your own. -->
+  	<link rel="stylesheet" media="screen" href="themes/style/web-2.0.css">
+
+  	<!-- Transition theme. More available in /themes/transition/ or create your own. -->
+  	<link rel="stylesheet" media="screen" href="themes/transition/horizontal-slide.css">
+	
+	<script src="modernizr.custom.js"></script>
+
+</head>
+
+<body>
+
+	<div class="deck-container">
+		<section class="slide" id="title-slide">				
+			<h2>Alex Henry</h2>
+			<h5>Twitter: @Alex_Henry21</h5>
+			<h5>GitHub: <a href="https://github.com/AlexanderHenry/">AlexanderHenry</a></h5>
+			<h5>Email: alexanderhenry21@gmail.com</h5>
+			<h1>RubyMotion:<br>Our First App</h1>
+
+			<img src="resources/rubymotionicon.png"/>
+		</section>
+		
+		<section class="slide" id="table-of-contents">
+			<h2>Talk Contents</h2>
+			<img src="resources/toc.jpg" style="float:right;" height="400" width="500"/>
+			<ol>
+				<li>What Is RubyMotion?</li>
+				<li>A Bit of History</li>
+				<li>Installation & Configuration</li>
+				<li>RakeFile: App Name & Icon</li>
+				<li>App Delegate</li>
+				<li>Live Demo<ul>
+					<li>Labels</li>
+					<li>Toggle Switch & Checkbox</li>
+					<li>Slider</li>
+					<li>Text Field</li>
+					<li>Picker Wheel</li>
+					</ul></li>
+				<li>Resources</li>
+			</ol>
+		</section>
+		
+		<section class="slide" id="what-is">
+			<h2>What is RubyMotion?</h2>
+			
+			<p>RubyMotion utilizes the Ruby language, allowing Ruby applications to run natively on iOS, OS X, and Android.
+			Requirements:</p>
+			<ul>
+				<li>OS X 10.9 or <strong>higher</strong></li>
+				<li>Join the Mac developer program to ship apps (OS X)</li>
+				<li>iOS SDK (iOS)</li>
+				<li>Join iOS developer program for app-signing cert (iOS)</li>
+				<li>Join Google Play program (Android)</li>
+				<li>Android device configured for development (Android)</li>
+			</ul>
+			<img src="resources/snooplion.jpg" height="500" width="800"/>
+		</section>
+		
+		<section class="slide" id="brief-history">
+			<h2>Brief History</h2>
+			<img src="resources/thisis.jpg" height="300" width="600"/>
+			<!--<p>In 2008 Apple announced MacRuby, and by 2010 was an alternative to Objective-C. By 2011 the Mac App Store released, 
+			and MacRuby apps were welcome.  In late 2011 MacRuby's creator and lead developer Laurent Sansonetti left Apple 
+			to pursue bringing Ruby to iOS development, thus starting HipByte.  Half way through 2012 RubyMotion 1.0 was released.
+			Laurent currently manages HipByte from his home in Belgium.</p>-->
+		</section>
+		
+		<section class="slide" id="set-up">
+			<h2>Setting Up RubyMotion</h2>
+			
+			<h5>rubymotion.com/download</h5>
+			<img src="resources/downloadrm.png" height="300" width="950"/>
+			<p>Follow the installer instructions to install.</p>
+			
+			<p>Launch Terminal and run <strong><em>motion create AppName</em></strong></p>
+			<img src="resources/motioncreate.png"/>
+		</section>
+		
+		<section class="slide" id="commands">
+			<h2>Commands</h2>
+			<p><strong><em>cd AppName</em></strong><br>
+			Commands are run from this directory.</p>
+			
+			<img src="resources/motioncommands.png"/> 
+		</section>
+		
+		<section class="slide" id="rakefile">
+			<h2>RakeFile</h2>
+			<p>This is where configuration of the app is done.</p>
+			<p>Open the <em>RakeFile</em> using your favorite text editor.</p>
+			<img src="resources/rakefile.png" height="325" width="700"/>
+			
+			<p><strong>$:.unshift</strong> will search /Library/RubyMotion/lib for other <em>require</em>s</p>
+
+			<!--<p>By default <strong>app.icons</strong> is not in the file,
+			and it must be plural, even when only adding one icon. Don't forget to add the image in the <em>resources</em> directory.
+			According to stackoverflow <strong><a href="http://stackoverflow.com/questions/25000796/how-to-add-an-app-icon-to-a-rubymotion-os-x-app">Mac must be .icns extension</a></strong>, but I have not tried this theory.</p>-->
+		</section>
+		
+		<section class="slide" id="rake-config">
+			<h2>Rake Config</h2>
+			<strong><em>rake config</em></strong> <p>will show settings for the app.</p>
+			<img src="resources/rakeconfig.png"/>
+		</section>
+		
+		<section class="slide" id="rake-task">
+			<h2>Rake Tasks</h2>
+			<strong><em>rake --tasks</em></strong> <p>will display tasks for the app.</p>
+			<img src="resources/raketasks.png"/>
+		</section>
+		
+		<section class="slide" id="app-delegate">
+			<h2>App Delegate</h2>
+			<p>The app_delegate is an object for the OS to respond to events during the process.
+			It receives callbacks when the app starts, ends, gets notifications, etc.</p>
+			<img src="resources/defaultdelegate.png"/>
+			
+		</section>
+		
+		<section class="slide" id="named-args">
+			<h2>Named Arguments</h2>
+			<!--<p>When a variable proceeds part of the function name which refers to it using colons.</p>
+			<p>Current versions of Ruby have named arguments, but at first they were not in Ruby. RubyMotion uses named arguments similar to Objective-C
+			so that Ruby can communicate with Apple APIs.</p>-->
+			<ul>
+			<li><strong>Ruby (old): </strong><em><strong>obj.shape(color, size)</em></strong></li>
+			<li><strong>Obj C: </strong><em><strong>[obj.shapeColor: color andSize: size];</em></strong></li>
+			<li><strong>RubyMotion: </strong><em><strong>obj.shapeColor(color, andSize: size)</em></strong></li>
+			</ul>
+			<img src="resources/namearg.png" width="650" height="300"/>
+		</section>
+		
+		<section class="slide" id="demo-time">
+			<br><br><br><br>
+			<img src="resources/demotime.jpg"/>
+		</section>
+		
+		<section class="slide" id="my-resources">
+			<h2>Resources</h2>
+			<img src="resources/cite.jpg" style="float:left;" height="400" width="500"/>
+			<ol style="float:right;">
+				<li><a href="http://stackoverflow.com/questions/25385916/rubymotion-and-uipickerview">StackOverflow UIPickerview</a></li>
+				<li><a href="https://docs.omniref.com/github/rubymotion/sugarcube/0.19.1">Omniref: Sugarcube docs</a></li>
+				<li><a href="github.com/rubymotion/sugarcube">Omniref: Sugarcube GitHub</a></li>
+				<li><a href="https://gist.github.com/ParkinT/3069318">ParkinT: UILabel Adjustable GitHub</a></li>
+				<li><a href="http://www.rubymotion.com/developers/guides/">RubyMotion Developer Guides</a></li>
+				<li><a href="http://www.rubymotion.com/developers/samples/">RubyMotion Developer Samples</a></li>
+				<li><a href="www.iosfonts.com">iOS Fonts</a></li>
+				<li>Googling</li>
+				<li>Twitter community</li>
+				<li>GitHub projects</li>
+				<li><em>RubyMotion: iOS Development with Ruby</em> by Clay Allsop</li>
+				<li>Brian Hogan</li>
+			</ol>
+		</section>
+	</div>
+	
+	<script src="jquery.min.js"></script>
+
+<!-- Deck Core and extensions -->
+<script src="core/deck.core.js"></script>
+<script src="extensions/menu/deck.menu.js"></script>
+<script src="extensions/goto/deck.goto.js"></script>
+<script src="extensions/status/deck.status.js"></script>
+<script src="extensions/navigation/deck.navigation.js"></script>
+<script src="extensions/scale/deck.scale.js"></script>
+
+<!-- Initialize the deck -->
+<script>
+$(function() {
+  $.deck('.slide');
+});
+</script>
+
+</body>
+</html>
